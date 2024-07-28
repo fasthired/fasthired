@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Registration Form | Fast-Hired and Travels</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Registration Form</h1>
+        <p class="intro">Welcome to Fast-Hired And Travels! We specialize in assisting job seekers in finding positions that match their training and qualifications. We believe in helping you secure a job that aligns with your expertise, rather than settling for any random opportunity. We charge no registration fees, processing fees, or upfront charges. No part of your data will be sold or shared with any third-party without your consent. Learn more about our <a href="https://linktr.ee/fasthiredandtravels" target="_blank">terms and conditions</a> and our privacy policy.</p>
+
+        <form id="job-registration-form">
+            <div class="section">
+                <h2>Personal Information</h2>
+                <p class="intro">Provide your personal details below. Include your social media profiles if applicable.</p>
+                <label for="full-name">Full Name:</label>
+                <input type="text" id="full-name" name="full-name" required>
+                
+                <label for="contact-number">Contact Number:</label>
+                <input type="tel" id="contact-number" name="contact-number" required>
+                
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required>
+                
+                <label for="social-media">Social Media Links:</label>
+                <input type="text" id="social-media" name="social-media" placeholder="e.g., LinkedIn, Twitter">
+            </div>
+
+            <div class="section">
+                <h2>Educational History</h2>
+                <p class="intro">Detail your educational background. Add up to 5 educational levels as needed.</p>
+                <div id="education">
+                    <div class="education-entry">
+                        <h3>Educational Level 1</h3>
+                        <label for="institution-name-1">Institution Name:</label>
+                        <input type="text" id="institution-name-1" name="institution-name[]">
+                        
+                        <label for="degree-obtained-1">Degree Obtained:</label>
+                        <input type="text" id="degree-obtained-1" name="degree-obtained[]">
+                        
+                        <label for="field-of-study-1">Field of Study:</label>
+                        <input type="text" id="field-of-study-1" name="field-of-study[]">
+                        
+                        <label for="dates-attended-1">Dates Attended:</label>
+                        <input type="text" id="dates-attended-1" name="dates-attended[]">
+                        
+                        <label for="additional-details-1">Additional Details:</label>
+                        <textarea id="additional-details-1" name="additional-details[]"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addEducation()">Add Another Education Level</button>
+            </div>
+
+            <div class="section">
+                <h2>Work History</h2>
+                <p class="intro">Provide details about your work experience. Add up to 5 work experiences as needed.</p>
+                <div id="work-history">
+                    <div class="work-entry">
+                        <h3>Work Experience 1</h3>
+                        <label for="company-name-1">Company Name:</label>
+                        <input type="text" id="company-name-1" name="company-name[]">
+                        
+                        <label for="job-title-1">Job Title:</label>
+                        <input type="text" id="job-title-1" name="job-title[]">
+                        
+                        <label for="employment-dates-1">Employment Dates:</label>
+                        <input type="text" id="employment-dates-1" name="employment-dates[]">
+                        
+                        <label for="job-overview-1">Overview of Responsibilities and Role:</label>
+                        <textarea id="job-overview-1" name="job-overview[]"></textarea>
+                        
+                        <label for="duties-1">Duties and Responsibilities:</label>
+                        <textarea id="duties-1" name="duties[]" rows="4"></textarea>
+                        
+                        <label for="achievements-1">Quantifiable Achievements:</label>
+                        <textarea id="achievements-1" name="achievements[]" rows="2"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addWork()">Add Another Work Experience</button>
+            </div>
+
+            <div class="section">
+                <h2>Certifications and Training</h2>
+                <p class="intro">List your certifications and training programs. Add up to 5 certifications as needed.</p>
+                <div id="certifications">
+                    <div class="certification-entry">
+                        <h3>Certification 1</h3>
+                        <label for="certification-name-1">Certification Name:</label>
+                        <input type="text" id="certification-name-1" name="certification-name[]">
+                        
+                        <label for="issuing-organization-1">Issuing Organization:</label>
+                        <input type="text" id="issuing-organization-1" name="issuing-organization[]">
+                        
+                        <label for="date-obtained-1">Date Obtained:</label>
+                        <input type="date" id="date-obtained-1" name="date-obtained[]">
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addCertification()">Add Another Certification</button>
+            </div>
+
+            <div class="section">
+                <h2>Projects</h2>
+                <p class="intro">Detail your projects and your contributions to them. Add up to 5 projects as needed.</p>
+                <div id="projects">
+                    <div class="project-entry">
+                        <h3>Project 1</h3>
+                        <label for="project-name-1">Project Name:</label>
+                        <input type="text" id="project-name-1" name="project-name[]">
+                        
+                        <label for="role-1">Role:</label>
+                        <input type="text" id="role-1" name="role[]">
+                        
+                        <label for="project-description-1">Description:</label>
+                        <textarea id="project-description-1" name="project-description[]"></textarea>
+                        
+                        <label for="project-achievements-1">Achievements:</label>
+                        <textarea id="project-achievements-1" name="project-achievements[]"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addProject()">Add Another Project</button>
+            </div>
+
+            <div class="section">
+                <h2>Publications and Presentations</h2>
+                <p class="intro">Include details of any publications or presentations you have made. Add up to 5 entries as needed.</p>
+                <div id="publications">
+                    <div class="publication-entry">
+                        <h3>Publication 1</h3>
+                        <label for="publication-title-1">Publication Title:</label>
+                        <input type="text" id="publication-title-1" name="publication-title[]">
+                        
+                        <label for="journal-name-1">Journal/Conference Name:</label>
+                        <input type="text" id="journal-name-1" name="journal-name[]">
+                        
+                        <label for="publication-date-1">Date:</label>
+                        <input type="date" id="publication-date-1" name="publication-date[]">
+                        
+                        <label for="publication-summary-1">Summary:</label>
+                        <textarea id="publication-summary-1" name="publication-summary[]"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addPublication()">Add Another Publication</button>
+            </div>
+
+            <div class="section">
+                <h2>Awards and Honors</h2>
+                <p class="intro">List any awards or honors you have received. Add up to 5 awards as needed.</p>
+                <div id="awards">
+                    <div class="award-entry">
+                        <h3>Award 1</h3>
+                        <label for="award-name-1">Award Name:</label>
+                        <input type="text" id="award-name-1" name="award-name[]">
+                        
+                        <label for="issuing-organization-1">Issuing Organization:</label>
+                        <input type="text" id="issuing-organization-1" name="issuing-organization[]">
+                        
+                        <label for="award-date-1">Date:</label>
+                        <input type="date" id="award-date-1" name="award-date[]">
+                        
+                        <label for="award-description-1">Description:</label>
+                        <textarea id="award-description-1" name="award-description[]"></textarea>
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addAward()">Add Another Award</button>
+            </div>
+
+            <div class="section">
+                <h2>Professional Affiliations</h2>
+                <p class="intro">Provide details about your professional affiliations. Add up to 5 affiliations as needed.</p>
+                <div id="affiliations">
+                    <div class="affiliation-entry">
+                        <h3>Affiliation 1</h3>
+                        <label for="organization-name-1">Organization Name:</label>
+                        <input type="text" id="organization-name-1" name="organization-name[]">
+                        
+                        <label for="membership-type-1">Membership Type:</label>
+                        <input type="text" id="membership-type-1" name="membership-type[]">
+                        
+                        <label for="affiliation-dates-1">Dates:</label>
+                        <input type="text" id="affiliation-dates-1" name="affiliation-dates[]">
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addAffiliation()">Add Another Affiliation</button>
+            </div>
+
+            <div class="section">
+                <h2>References</h2>
+                <p class="intro">Provide references who can attest to your qualifications and work experience. Add up to 5 references as needed.</p>
+                <div id="references">
+                    <div class="reference-entry">
+                        <h3>Reference 1</h3>
+                        <label for="reference-name-1">Reference Name:</label>
+                        <input type="text" id="reference-name-1" name="reference-name[]">
+                        
+                        <label for="reference-title-1">Title and Organization:</label>
+                        <input type="text" id="reference-title-1" name="reference-title[]">
+                        
+                        <label for="reference-contact-1">Contact Information:</label>
+                        <input type="text" id="reference-contact-1" name="reference-contact[]">
+                        
+                        <label for="reference-relationship-1">Relationship:</label>
+                        <input type="text" id="reference-relationship-1" name="reference-relationship[]">
+                    </div>
+                </div>
+                <button type="button" class="add-more" onclick="addReference()">Add Another Reference</button>
+            </div>
+
+            <div class="form-footer">
+                <p>By submitting this form, you have read and agreed to our <a href="https://linktr.ee/fasthiredandtravels" target="_blank">terms and conditions</a>.</p>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <div class="contact-info">
+            <p>📞 Contact Us: +233 551999901 | +233 546460945</p>
+            <p>📍 Location: Madina Zongo Junction</p>
+            <p>© 2024 Fast-Hired and Travels. All rights reserved.</p>
+        </div>
+    </div>
+<script src="scripts.js"></script>
+</body>
+</html>
