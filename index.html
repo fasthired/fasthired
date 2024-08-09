@@ -1,231 +1,814 @@
 <!DOCTYPE html>
+<meta name="robots" content="noindex">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Registration Form | Fast-Hired and Travels</title>
-    <link rel="stylesheet" href="styles.css">
-    <script defer src="scripts.js"></script>
+    <title>Fast-Hired & Travels</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+		        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .content {
+            padding: 20px;
+        }
+		
+        .container {
+            text-align: center;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff9800; /* Bright Orange */
+        }
+
+        .name {
+            font-size: 36px;
+            margin: 10px 0;
+            color: #0d47a1; /* Dark Blue */
+        }
+
+        .bio {
+            font-size: 20px;
+            color: #ff9800; /* Bright Orange */
+            margin-bottom: 20px;
+        }
+
+        .social-icons {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #333;
+            font-size: 24px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #0d47a1; /* Dark Blue */
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .link {
+            display: block;
+            background: #0d47a1; /* Dark Blue */
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            background: #ff9800; /* Bright Orange */
+        }
+
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            justify-content: center;
+        }
+
+        .link-content i {
+            font-size: 22px;
+        }
+
+        .link-content span {
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #ffffff; /* White text color for contrast */
+            background-color: #0d47a1; /* Dark Blue background */
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer .contact-info {
+            margin-bottom: 10px;
+        }
+
+        .footer .terms {
+            font-style: italic;
+        }
+
+        .footer .copyright {
+            color: #ffffff; /* White text color for contrast */
+        }
+
+       .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+		    overflow: hidden;
+        }
+
+        .popup.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .popup-content {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .popup-content h2 {
+            margin: 0 0 10px;
+            font-size: 20px;
+            color: #0d47a1; /* Dark Blue */
+        }
+
+        .popup-content p {
+            font-size: 16px;
+            color: #555;
+            margin: 0 0 20px;
+        }
+
+        .popup-content a {
+            display: inline-block;
+            background: #0d47a1; /* Dark Blue */
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .popup-content a:hover {
+            background: #ff9800; /* Bright Orange */
+        }
+
+        .popup-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            color: #0d47a1; /* Dark Blue */
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .popup-content .close-btn:hover {
+            color: #ff9800; /* Bright Orange */
+        }
+
+        .about-section {
+            margin-top: 20px; /* Reduced margin */
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #0d47a1; /* Dark Blue */
+            border-bottom: 2px solid #0d47a1; /* Dark Blue */
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .about-section .section-title {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            color: #ff9800; /* Bright Orange */
+        }
+
+        .about-section .section-content {
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        /* Image Slider */
+        .slider {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .navigation {
+            position: absolute;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .navigation button {
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .navigation button:hover {
+            background: #ff9800; /* Bright Orange */
+        }
+      
+       .profile-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            padding: 2em 1em;
+            justify-content: center;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5em;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-card img {
+            width: 100%;
+            height: 250px; /* Portrait style */
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+
+        .profile-card h3 {
+            margin: 0.5em 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .profile-card p {
+            margin: 0.5em 0;
+            color: #666;
+        }
+
+        .profile-card a.button {
+            background-color: #ff6600;
+            border: none;
+            color: white;
+            padding: 0.75em 1.5em;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1em;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .profile-card a.button:hover {
+            background-color: #e55a00;
+        }
+
+        .skills-section {
+            text-align: left;
+            margin-top: 1em;
+        }
+
+        .skills-section h4 {
+            margin: 1em 0 0.5em 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .skill {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75em;
+        }
+
+        .skill i {
+            margin-right: 0.5em;
+            color: #ff6600;
+        }
+
+        .skill .bar {
+            flex-grow: 1;
+            height: 5px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-left: 0.5em;
+            position: relative;
+        }
+
+        .skill .bar span {
+            display: block;
+            height: 100%;
+            background-color: #ff6600;
+            border-radius: 5px;
+        }
+
+        .relocate {
+            display: flex;
+            align-items: center;
+            margin-top: 1em;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .relocate i {
+            margin-right: 0.5em;
+            color: #ff6600;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 1em;
+            margin: 2em 0;
+        }
+
+        .pagination button {
+            padding: 0.5em 1em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #fff;
+            color: #333;
+            font-size: 1em;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination button:hover {
+            background-color: #f0f0f0;
+            color: #ff6600;
+        }
+		        .map-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .map-container h1 {
+            font-size: 2em;
+            margin-bottom: 1px;
+            color: #333;
+        }
+
+        .map-container {
+    		text-align: center;
+    		padding: 20px;
+    		background-color: #fff;
+    		width: 100%; /* Ensure the container takes full width */
+			max-width: 1000px; /* Optional: set a max-width for larger screens */
+    		margin: 0 auto;
+        }
+
+        .map-responsive {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%;
+			height: : 0;
+			margin-bottom: 20px
+            /* 16:9 aspect ratio */
+        }
+
+        .map-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+        }
+   </style>
+<style id="jsbin-css">
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+header p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+nav {
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin-bottom: 5px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 2px;
+    max-width: 800px;
+    margin: auto;
+}
+
+main section {
+    margin-bottom: 1px;
+}
+
+main h2 {
+    font-size: 1.8em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Job Registration Form</h1>
-        <p class="intro">Welcome to Fast-Hired And Travels! We specialize in assisting job seekers in finding positions that match their training and qualifications. We believe in helping you secure a job that aligns with your expertise, rather than settling for any random opportunity. We charge no registration fees, processing fees, or upfront charges. No part of your data will be sold or shared with any third-party without your consent. Learn more about our <a href="https://linktr.ee/fasthiredandtravels" target="_blank">terms and conditions</a> and our privacy policy.</p>
-
-        <form id="job-registration-form">
-            <div class="section">
-                <h2>Personal Information</h2>
-                <p class="intro">Provide your personal details below. Include your social media profiles if applicable.</p>
-                <label for="full-name">Full Name:</label>
-                <input type="text" id="full-name" name="full-name" required>
-                
-                <label for="contact-number">Contact Number:</label>
-                <input type="tel" id="contact-number" name="contact-number" required>
-                
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
-                
-                <label for="country">Country:</label>
-                <input type="text" id="country" name="country" required>
-                
-                <label for="social-media">Social Media Links:</label>
-                <input type="text" id="social-media" name="social-media" placeholder="e.g., LinkedIn, Twitter">
-            </div>
-
-            <div class="section">
-                <h2>Educational History</h2>
-                <p class="intro">Detail your educational background. Add up to 5 educational levels as needed.</p>
-                <div id="education">
-                    <div class="education-entry">
-                        <h3>Educational Level 1</h3>
-                        <label for="institution-name-1">Institution Name:</label>
-                        <input type="text" id="institution-name-1" name="institution-name[]">
-                        
-                        <label for="degree-obtained-1">Degree Obtained:</label>
-                        <input type="text" id="degree-obtained-1" name="degree-obtained[]">
-                        
-                        <label for="field-of-study-1">Field of Study:</label>
-                        <input type="text" id="field-of-study-1" name="field-of-study[]">
-                        
-                        <label for="dates-attended-1">Dates Attended:</label>
-                        <input type="text" id="dates-attended-1" name="dates-attended[]">
-                        
-                        <label for="additional-details-1">Additional Details:</label>
-                        <textarea id="additional-details-1" name="additional-details[]"></textarea>
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addEducation()">Add Another Education Level</button>
-            </div>
-
-            <div class="section">
-                <h2>Work History</h2>
-                <p class="intro">Provide details about your work experience. Add up to 5 work experiences as needed.</p>
-                <div id="work-history">
-                    <div class="work-entry">
-                        <h3>Work Experience 1</h3>
-                        <label for="company-name-1">Company Name:</label>
-                        <input type="text" id="company-name-1" name="company-name[]">
-                        
-                        <label for="job-title-1">Job Title:</label>
-                        <input type="text" id="job-title-1" name="job-title[]">
-                        
-                        <label for="employment-dates-1">Employment Dates:</label>
-                        <input type="text" id="employment-dates-1" name="employment-dates[]">
-                        
-                        <label for="job-overview-1">Overview of Responsibilities and Role:</label>
-                        <textarea id="job-overview-1" name="job-overview[]"></textarea>
-                        
-                        <label for="duties-1">Duties and Responsibilities:</label>
-                        <textarea id="duties-1" name="duties[]" rows="4"></textarea>
-                        
-                        <label for="achievements-1">Quantifiable Achievements:</label>
-                        <textarea id="achievements-1" name="achievements[]" rows="2"></textarea>
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addWork()">Add Another Work Experience</button>
-            </div>
-
-            <div class="section">
-                <h2>Certifications and Training</h2>
-                <p class="intro">List your certifications and training programs. Add up to 5 certifications as needed.</p>
-                <div id="certifications">
-                    <div class="certification-entry">
-                        <h3>Certification 1</h3>
-                        <label for="certification-name-1">Certification Name:</label>
-                        <input type="text" id="certification-name-1" name="certification-name[]">
-                        
-                        <label for="issuing-organization-1">Issuing Organization:</label>
-                        <input type="text" id="issuing-organization-1" name="issuing-organization[]">
-                        
-                        <label for="date-obtained-1">Date Obtained:</label>
-                        <input type="date" id="date-obtained-1" name="date-obtained[]">
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addCertification()">Add Another Certification</button>
-            </div>
-
-            <div class="section">
-                <h2>Projects</h2>
-                <p class="intro">Detail your projects and your contributions to them. Add up to 5 projects as needed.</p>
-                <div id="projects">
-                    <div class="project-entry">
-                        <h3>Project 1</h3>
-                        <label for="project-name-1">Project Name:</label>
-                        <input type="text" id="project-name-1" name="project-name[]">
-                        
-                        <label for="role-1">Role:</label>
-                        <input type="text" id="role-1" name="role[]">
-                        
-                        <label for="project-description-1">Description:</label>
-                        <textarea id="project-description-1" name="project-description[]"></textarea>
-                        
-                        <label for="project-achievements-1">Achievements:</label>
-                        <textarea id="project-achievements-1" name="project-achievements[]"></textarea>
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addProject()">Add Another Project</button>
-            </div>
-
-            <div class="section">
-                <h2>Publications and Presentations</h2>
-                <p class="intro">Include details of any publications or presentations you have made. Add up to 5 entries as needed.</p>
-                <div id="publications">
-                    <div class="publication-entry">
-                        <h3>Publication 1</h3>
-                        <label for="publication-title-1">Publication Title:</label>
-                        <input type="text" id="publication-title-1" name="publication-title[]">
-                        
-                        <label for="journal-name-1">Journal/Conference Name:</label>
-                        <input type="text" id="journal-name-1" name="journal-name[]">
-                        
-                        <label for="publication-date-1">Date:</label>
-                        <input type="date" id="publication-date-1" name="publication-date[]">
-                        
-                        <label for="publication-summary-1">Summary:</label>
-                        <textarea id="publication-summary-1" name="publication-summary[]"></textarea>
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addPublication()">Add Another Publication</button>
-            </div>
-
-            <div class="section">
-                <h2>Awards and Honors</h2>
-                <p class="intro">List any awards or honors you have received. Add up to 5 awards as needed.</p>
-                <div id="awards">
-                    <div class="award-entry">
-                        <h3>Award 1</h3>
-                        <label for="award-name-1">Award Name:</label>
-                        <input type="text" id="award-name-1" name="award-name[]">
-                        
-                        <label for="issuing-organization-1">Issuing Organization:</label>
-                        <input type="text" id="issuing-organization-1" name="issuing-organization[]">
-                        
-                        <label for="award-date-1">Date:</label>
-                        <input type="date" id="award-date-1" name="award-date[]">
-                        
-                        <label for="award-description-1">Description:</label>
-                        <textarea id="award-description-1" name="award-description[]"></textarea>
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addAward()">Add Another Award</button>
-            </div>
-
-            <div class="section">
-                <h2>Professional Affiliations</h2>
-                <p class="intro">Provide details about your professional affiliations. Add up to 5 affiliations as needed.</p>
-                <div id="affiliations">
-                    <div class="affiliation-entry">
-                        <h3>Affiliation 1</h3>
-                        <label for="organization-name-1">Organization Name:</label>
-                        <input type="text" id="organization-name-1" name="organization-name[]">
-                        
-                        <label for="membership-type-1">Membership Type:</label>
-                        <input type="text" id="membership-type-1" name="membership-type[]">
-                        
-                        <label for="affiliation-dates-1">Dates:</label>
-                        <input type="text" id="affiliation-dates-1" name="affiliation-dates[]">
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addAffiliation()">Add Another Affiliation</button>
-            </div>
-
-            <div class="section">
-                <h2>References</h2>
-                <p class="intro">Provide references who can attest to your qualifications and work experience. Add up to 5 references as needed.</p>
-                <div id="references">
-                    <div class="reference-entry">
-                        <h3>Reference 1</h3>
-                        <label for="reference-name-1">Reference Name:</label>
-                        <input type="text" id="reference-name-1" name="reference-name[]">
-                        
-                        <label for="reference-title-1">Title and Organization:</label>
-                        <input type="text" id="reference-title-1" name="reference-title[]">
-                        
-                        <label for="reference-contact-1">Contact Information:</label>
-                        <input type="text" id="reference-contact-1" name="reference-contact[]">
-                        
-                        <label for="reference-relationship-1">Relationship:</label>
-                        <input type="text" id="reference-relationship-1" name="reference-relationship[]">
-                    </div>
-                </div>
-                <button type="button" class="add-more" onclick="addReference()">Add Another Reference</button>
-            </div>
-
-            <div class="form-footer">
-                <p>By submitting this form, you have read and agreed to our <a href="https://linktr.ee/fasthiredandtravels" target="_blank">terms and conditions</a>.</p>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-
-        <div class="contact-info">
-            <p>📞 Contact Us: +233 551999901 | +233 546460945</p>
-            <p>📍 Location: Madina Zongo Junction</p>
-            <p>© 2024 Fast-Hired and Travels. All rights reserved.</p>
+    <!-- Popup Section -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            	<span class="close-btn" id="close-popup">&times;</span>
+            <h2>CV/RESUME REVIEW</h2>
+            <p>Enhance your career prospects with a professionally reviewed CV Report. Get personalized feedback to make your resume shine!</p>
+            <a href="https://wa.me/233546460945" target="_blank">Request Service Via WhatsApp</a>
         </div>
     </div>
-<script src="scripts.js"></script>
+  
+    <!-- Main Content -->
+    <div class="container">
+        <div class="profile">
+            <img src="https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/07/logo3.png" alt="Profile Picture" class="profile-img">
+            <h1 class="name">Fast-Hired & Travels</h1>
+            <p class="bio">Connecting talent with opportunity across Africa</p>
+        </div>
+
+        <!-- Social Media Icons -->
+        <ul class="social-icons">
+            <li><a href="https://web.facebook.com/fasthiredandtravels?_rdc=1&_rdr" target="_blank" class="fab fa-facebook-f"></a></li>
+            <li><a href="https://x.com/fasthired_" target="_blank" class="fab fa-twitter"></a></li>
+            <li><a href="https://www.instagram.com/fasthiredandtravels_/" target="_blank" class="fab fa-instagram"></a></li>
+            <li><a href="https://https://wa.me/233546460945//" target="_blank" class="fab fa-whatsapp"></a></li>
+            <li><a href="https://https://www.youtube.com/@Fast-HiredAndTravels/?sub_confirmation=1" target="_blank" class="fab fa-youtube"></a></li>
+            <li><a href="https://https://t.me/fasthiredandtravels" target="_blank" class="fab fa-telegram"></a></li>
+            <li><a href="https://www.tiktok.com/@fashionably.hired" target="_blank" class="fab fa-tiktok"></a></li>
+        </ul>
+		
+		<hr>
+
+        <!-- Image Slider -->
+        <div class="slider">
+            <div class="slides">
+                <img src="https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/07/34342423.png" alt="Slide 1">
+                <img src="https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/07/errw343434343.png" alt="Slide 2">
+                <img src="https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/07/545454333.png" alt="Slide 3">
+            </div>
+            <div class="navigation">
+                <button id="prev">&lt;</button>
+                <button id="next">&gt;</button>
+            </div>
+        </div>
+
+		<hr> 
+		
+        <!-- About Us Section -->
+        <div class="about-section">
+            <h2>About Us</h2>
+            <div class="section-title">Mission</div>
+            <p class="section-content">Our mission is to connect job seekers with local employment opportunities and provide homes and businesses with skilled workers, all at no cost. We aim to streamline the job search and hiring process by offering tailored job listings and a pool of verified candidates, ensuring high-quality and accessible employment solutions for everyone.</p>
+            <div class="section-title">Vision</div>
+            <p class="section-content">Our vision is to be the premier employment platform across Africa, connecting job seekers and businesses in all 54 countries. We strive to provide efficient, local job opportunities and a robust network of skilled professionals, driving economic growth and fostering talent throughout the continent.</p>
+        </div>
+
+       <!-- Links -->
+       <div class="links">
+           <a href="https://docs.google.com/forms/d/1AV1tUtxCiiHYnJYZjMx-9rw1EKrQPKr_6drAc1WQ-II/edit" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-user-plus"></i>
+                   <span>Job Seeker Registration</span>
+               </div>
+           </a>
+           <a href="https://bit.ly/42r8PaT" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-file-alt"></i>
+                   <span>CV/Resume Writing Service</span>
+               </div>
+           </a>
+           <a href="https://whatsapp.com/channel/0029VaBsn6KDZ4LgVUn0yg2T" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fab fa-whatsapp"></i>
+                   <span>Join Our Job Channel</span>
+               </div>
+           </a>
+           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfefX9mPj6rkZHEZ3II-NFvO14YmrYBfBoESSYD27SUMgaXyQ/viewform" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-briefcase"></i>
+                   <span>Request A Corporate Worker</span>
+               </div>
+           </a>
+           <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLlGoLcVdXPuLnOC26t3LfIVa82Sg_aiGX92sMJKNTGN5Wg/viewform" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-home"></i>
+                   <span>Request A Domestic Worker</span>
+               </div>
+           </a>
+           <a href="https://drive.google.com/file/d/1Dqrv2F6Fuoqlja7dmP7eQlkc8XvLPiwj/view" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-exclamation-triangle"></i>
+                   <span>Domestic Worker Theft Case</span>
+               </div>
+           </a>
+           <a href="https://drive.google.com/file/d/1Y8GYZmhBv1G7OiD3B5aRdB8i2899tW5p/view?usp=sharing" class="link" target="_blank">
+               <div class="link-content">
+                   <i class="fas fa-volume-up"></i>
+                   <span>Our Terms & Conditions (Audio)</span>
+               </div>
+           </a>
+       </div>
+    
+    <script>
+        // Show popup after 5 seconds
+        setTimeout(function() {
+            document.getElementById('popup').classList.add('active');
+        }, 5000);
+
+        // Close popup
+        document.getElementById('close-popup').onclick = function() {
+            document.getElementById('popup').classList.remove('active');
+        }
+
+        // Image Slider Logic
+        const slides = document.querySelector('.slides');
+        const slideImages = slides.querySelectorAll('img');
+        const prevButton = document.getElementById('prev');
+        const nextButton = document.getElementById('next');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slideImages.length;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slideImages.length) % slideImages.length;
+            showSlide(currentIndex);
+        }
+
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        // Automatically change slides every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+     
+    <main>
+        <section class="hero">
+            <h2>Featured Monthly Subscribers</h2>
+            <p>Top Candidates | Great Soft And Hard Skills | To-Level Competency.</p>
+     </section>
+        <section class="profile-grid" id="profile-grid">
+            <!-- Profiles will be dynamically inserted here -->
+        </section>
+        <div class="pagination">
+            <button id="prev-button">Previous</button>
+            <button id="next-button">Next</button>
+      </div>
+
+</div>
+<script>
+    const profiles = [
+        { img: 'https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/08/r343434343.png', name: 'Rukaya Abdulai', job: 'Customer Service Professional', cvLink: 'https://drive.google.com/file/d/1Dqrv2F6Fuoqlja7dmP7eQlkc8XvLPiwj/view', skills: { 'Hard Skills': [{ name: 'Office Suite', level: '90%' }, { name: 'CRM Software', level: '85%' }, { name: 'Social Media Savvy', level: '80%' }], 'Soft Skills': [{ name: 'Customer-Centric', level: '88%' }, { name: 'Team Player', level: '85%' }], 'Competencies': [{ name: 'Social Media Management', level: '90%' }, { name: 'Telemarketing', level: '82%' }] }, relocate: true },
+        { img: 'https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/08/ewrwerwerw3w3.png', name: 'Nana Yaw B. Amoah', job: 'Accounting | HR | Client Service', cvLink: 'https://drive.google.com/file/d/1I3F8L3mbphvV53Oc_1fcx26QNU_E5FLq/view', skills: { 'Hard Skills': [{ name: 'Office suite', level: '90%' }, { name: 'Data Analysis', level: '95%' }, { name: 'Quality control', level: '92%' }], 'Soft Skills': [{ name: 'Communication', level: '96%' }, { name: 'Problem-Solving', level: '93%' }], 'Competencies': [{ name: 'Leadership', level: '91%' }, { name: 'Decision-Making', level: '94%' }] }, relocate: true },
+        { img: 'https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/08/e434343.png', name: 'Cynthia Klu', job: 'Administrative Assistant', cvLink: 'https://drive.google.com/file/d/1I3F8L3mbphvV53Oc_1fcx26QNU_E5FLq/view', skills: { 'Hard Skills': [{ name: 'Office Suite', level: '95%' }, { name: 'Book Keeping', level: '85%' }, { name: 'Statistical Analysis', level: '80%' }], 'Soft Skills': [{ name: 'Critical Thinking', level: '98%' }, { name: 'Team Work', level: '99%' }], 'Competencies': [{ name: 'Result-Oriented', level: '99%' }, { name: 'Public Relations', level: '75%' }] }, relocate: true },
+        { img: 'https://www.amoahmotorssparelimited.com/wp-content/uploads/2024/08/werw3434.png', name: 'Mark  Mensah', job: 'Excavator Operator', cvLink: 'https://drive.google.com/file/d/1I3F8L3mbphvV53Oc_1fcx26QNU_E5FLq/view', skills: { 'Hard Skills': [{ name: 'Excavator Operation', level: '99%' }, { name: 'Equipment Maintenance ', level: '85%' }, { name: 'Excavation Techniques', level: '80%' }], 'Soft Skills': [{ name: 'Communication', level: '90%' }, { name: 'Problem-Solving', level: '88%' }], 'Competencies': [{ name: 'Safety Awareness', level: '90%' }, { name: 'Spatial Awareness', level: '82%' }] }, relocate: true },
+        { img: 'https://randomuser.me/api/portraits/men/5.jpg', name: 'Daniel Lee', job: 'Data Analyst', cvLink: 'https://drive.google.com/file/d/1I3F8L3mbphvV53Oc_1fcx26QNU_E5FLq/view', skills: { 'Hard Skills': [{ name: 'Python', level: '90%' }, { name: 'SQL', level: '85%' }, { name: 'Excel', level: '80%' }], 'Soft Skills': [{ name: 'Analytical Thinking', level: '88%' }, { name: 'Attention to Detail', level: '90%' }], 'Competencies': [{ name: 'Data Visualization', level: '87%' }, { name: 'Predictive Analytics', level: '82%' }] }, relocate: true }
+		
+    ];
+
+    const profilesPerPage = 2;
+    let currentPage = 1;
+
+    function renderProfiles(page) {
+        const startIndex = (page - 1) * profilesPerPage;
+        const endIndex = Math.min(startIndex + profilesPerPage, profiles.length);
+        const profileGrid = document.getElementById('profile-grid');
+
+        profileGrid.innerHTML = '';
+
+        for (let i = startIndex; i < endIndex; i++) {
+            const profile = profiles[i];
+            const profileCard = document.createElement('div');
+            profileCard.className = 'profile-card';
+
+            profileCard.innerHTML = `
+                <img src="${profile.img}" alt="${profile.name}">
+                <h3>${profile.name}</h3>
+                <p>${profile.job}</p>
+                <a href="${profile.cvLink}" class="button">View Resume</a>
+                <div class="skills-section">
+                    <h4>Hard Skills</h4>
+                    ${profile.skills['Hard Skills'].map(skill => `
+                        <div class="skill">
+                            <i class="fas fa-tools"></i>
+                            <span>${skill.name}</span>
+                            <div class="bar"><span style="width: ${skill.level};"></span></div>
+                            <span>${skill.level}</span>
+                        </div>
+                    `).join('')}
+                    <h4>Soft Skills</h4>
+                    ${profile.skills['Soft Skills'].map(skill => `
+                        <div class="skill">
+                            <i class="fas fa-user-tie"></i>
+                            <span>${skill.name}</span>
+                            <div class="bar"><span style="width: ${skill.level};"></span></div>
+                            <span>${skill.level}</span>
+                        </div>
+                    `).join('')}
+                    <h4>Competencies</h4>
+                    ${profile.skills['Competencies'].map(skill => `
+                        <div class="skill">
+                            <i class="fas fa-briefcase"></i>
+                            <span>${skill.name}</span>
+                            <div class="bar"><span style="width: ${skill.level};"></span></div>
+                            <span>${skill.level}</span>
+                        </div>
+                    `).join('')}
+                    <div class="relocate">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Willing to Relocate: ${profile.relocate ? 'Yes' : 'No'}</span>
+                    </div>
+                </div>
+            `;
+
+            profileGrid.appendChild(profileCard);
+        }
+    }
+
+    function updatePagination() {
+        document.getElementById('prev-button').disabled = currentPage === 1;
+        document.getElementById('next-button').disabled = currentPage === Math.ceil(profiles.length / profilesPerPage);
+    }
+
+    document.getElementById('prev-button').addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            renderProfiles(currentPage);
+            updatePagination();
+        }
+    });
+
+    document.getElementById('next-button').addEventListener('click', () => {
+        if (currentPage < Math.ceil(profiles.length / profilesPerPage)) {
+            currentPage++;
+            renderProfiles(currentPage);
+            updatePagination();
+        }
+    });
+
+    // Initial render and pagination setup
+    renderProfiles(currentPage);
+    updatePagination();
+</script>
+
+	 <div class="map-container">
+        <h1>Visit Our Location</h1>
+     <hr>
+		 
+        <div class="map-responsive">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.2309686792137!2d-0.17713672501392647!3d5.679717894301909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf9d1ff7bef061%3A0x2dcb252511b1239f!2sFast%20-%20Hired%20And%20Travels!5e0!3m2!1sen!2sgh!4v1723050795410!5m2!1sen!2sgh" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+	
+    <div class="footer">
+        <p class="contact-info">Contact us: Fast-Hired And Travels, Zongo Junction, Accra: f.hiredandtravels@gmail.com | Phone: +233 546 460 945</p>
+        <p class="terms">Terms of Service | Privacy Policy</p>
+        <p class="copyright">&copy; 2024 Fast-Hired & Travels. All rights reserved.</p>
+    </div>
 </body>
 </html>
